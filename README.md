@@ -22,6 +22,7 @@ Repozytorium zawiera dane z testów zebrane przez SimBa
 - Silnik dalej ma problemy ze spalaniem
 - Warto używać tych samych definicji mavlink na wszystkich urządzeniach
 - Zapraszamy znacznie mniej osób na testy
+- 1.5s między zapłonem a otwarciem zaworu to znacząco za dużo -> zmniejszamy do 1s
 
 | Name | Link |
 |:---:|:---:|
@@ -48,11 +49,31 @@ Repozytorium zawiera dane z testów zebrane przez SimBa
 - Trzeba zwiększyć częstotliwość próbkowania ciśnienia aby zobaczyć oscylacje
 - Silnik ma nierówne spalanie -> zmniejszenie proporcji paliwa do utleniacza
 - Warto by lepiej mocować połączenie tensobelki aby nie stracić danych po 2s
+- 2s między zapłonem a otwarciem zaworu to znacząco za dużo -> zmniejszamy do 1.5s
 
 | Name | Link |
 |:---:|:---:|
 | Nagrania GS | https://drive.google.com/drive/folders/15RPaZ5ydAYWAkqbo0ocqHZPF6PtVwEi4 |
 | Nagrania Telefon | https://drive.google.com/drive/folders/1-hqclorNGLzYF2rBlWpgVt7yDxVAMdAb |
 | Dane GS | https://drive.google.com/drive/folders/1qZy7ktI1JaxVaSpvzJJgnKRyEVECuHN2 |
+
+-----------------------
+
+
+## Test Hydrostatyczny 12.12.2025
+
+| Test | Ciśnienie  | Czas|
+| :--- | :--- | :--- |
+| Zbiornik | 105 Bar | 5 min |
+| Komora | 60 Bar | 5 min|
+
+![Hydrotsatic  Tank Pressure](/2026_12_12_hydrostatic/charts/2025_12_12_hydrostatic.png)
+
+### Post-Mortem
+- To że wskazania z czujników zgadzają się dla 1 Bar nie znaczy że czujnik działa
+- Kabelki lutowane na kolanie lubią przerywać i szumić choć i tak nie jest źle
+
+| Name | Link |
+|:---:|:---:|
 
 -----------------------
