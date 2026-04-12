@@ -1,0 +1,11 @@
+[book]
+authors = ["SimLE SimBa"]
+language = "pl"
+src = "src"
+title = 'SimBa - Dokumentacja Testów'
+
+[preprocessor.mathjax]
+optional = true
+
+[output.html]
+mathjax-support = true
