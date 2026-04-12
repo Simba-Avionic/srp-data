@@ -3,8 +3,8 @@
 ## Konfiguracja i Wyniki
 | Konfiguracja Systemu | Parametry Operacyjne | Wyniki Silnikowe |
 | :--- | :--- | :--- |
-| **Soft:** [v0.3.0](https://github.com/Simba-Avionic/srp/releases/tag/v0.3.0) | **Utleniacz:** 10.1 kg \\( N_2O \\) ± 200g | **\\( I_{tot} \\):** 1787.4 Ns |
-| **Hardware:** Engine Board | **Ciśnienie:** 34.5 Bar ±  0.5 Bar | **Max Thrust:** 303.0 N |
+| **Software:** [v0.3.0](https://github.com/Simba-Avionic/srp/releases/tag/v0.3.0) | **Utleniacz:** 10.1 kg \\( N_2O \\) ± 200g | **\\( I_{tot} \\):** 1787.4 Ns |
+| **Hardware:** [Engine Computer](../../common/EngineComputer_schematic.pdf) | **Ciśnienie:** 34.5 Bar ±  0.5 Bar | **Max Thrust:** 303.0 N |
 | **Próbkowanie Tensobelki:** 320 Hz | **Temp. Otoczenia:** 0°C | **Burn Time:** 10 s |
 | **Próbkowanie Ciśnienia zbiornika:** 50 Hz | **Odpalenie:** srp-app |  |
 | **Próbkowanie Ciśnienia komory:** 166 Hz | |
