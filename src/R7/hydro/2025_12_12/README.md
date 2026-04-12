@@ -7,7 +7,7 @@
 | Komora | 60 Bar | 5 min|
 
 ## Wykresy
-![Hydrotsatic Tank Pressure](2025_12_12_hydrostatic.png)
+![Hydrotsatic Tank Pressure](pressure.png)
 
 
 ## Post-Mortem

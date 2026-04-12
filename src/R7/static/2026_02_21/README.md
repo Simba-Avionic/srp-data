@@ -4,16 +4,17 @@
 
 | Konfiguracja Systemu | Parametry Operacyjne | Wyniki Silnikowe |
 | :--- | :--- | :--- |
-| **Soft:** [v0.1.0](https://github.com/Simba-Avionic/srp/releases/tag/v0.1) |  **Utleniacz:** 5.1 kg \\( N_2O \\) ± 200g | **\\( I_{tot} \\):** unknown |
-| **Hardware:** DevBoard | **Ciśnienie:** 50 Bar | **Max Thrust:** 5000 N |
-| **Próbkowanie Tensobelki:** 320 Hz | **Temp. Otoczenia:** 7°C | **Burn Time:** unknown |
-| **Próbkowanie Ciśnienia zbiornika:** 10 Hz | **Próbkowanie Ciśnienia komory:** 10 Hz| **Odpalenie:** srp-app |
+| **Soft:** [v0.1.0](https://github.com/Simba-Avionic/srp/releases/tag/v0.1) |  **Utleniacz:** 5.1kg \\( N_2O \\) ± 200g | **\\( I_{tot} \\):** unknown |
+| **Hardware:** DevBoard | **Ciśnienie:** 50Bar | **Max Thrust:** 5000N |
+| **Próbkowanie Tensobelki:** 320Hz | **Temp. Otoczenia:** 7°C | **Burn Time:** unknown |
+| **Próbkowanie Ciśnienia zbiornika:** 10Hz | **Odpalenie:** srp-app | |
+| **Próbkowanie Ciśnienia komory:** 10Hz | | |
 
 ## Wykresy 
 
 
-![Tank And Chamber Pressure Chart](static_21_02_2026.png)
- ![Thrust Chart](thrust_21_02_2026.png) 
+![Tank And Chamber Pressure Chart](pressure.png)
+ ![Thrust Chart](thrust.png) 
 
 ## Post-Mortem
 - Trzeba zwiększyć częstotliwość próbkowania ciśnienia aby zobaczyć oscylacje

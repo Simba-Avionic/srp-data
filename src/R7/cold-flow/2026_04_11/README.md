@@ -6,12 +6,13 @@
 | **Soft:** [v0.3.0](https://github.com/Simba-Avionic/srp/releases/tag/v0.3.0) | **Utleniacz:** 10.1 kg \\( N_2O \\) ± 200g | **\\( I_{tot} \\):** 1787.4 Ns |
 | **Hardware:** Engine Board | **Ciśnienie:** 34.5 Bar ±  0.5 Bar | **Max Thrust:** 303.0 N |
 | **Próbkowanie Tensobelki:** 320 Hz | **Temp. Otoczenia:** 0°C | **Burn Time:** 10 s |
-| **Próbkowanie Ciśnienia zbiornika:** 50 Hz | **Próbkowanie Ciśnienia komory:** 166 Hz  | **Odpalenie:** srp-app |
+| **Próbkowanie Ciśnienia zbiornika:** 50 Hz | **Odpalenie:** srp-app |  |
+| **Próbkowanie Ciśnienia komory:** 166 Hz | |
 
 ## Wykresy 
 | Analiza Ciśnienia | Analiza Ciągu |
 |:---:|:---:|
-| ![Tank And Chamber Pressure Chart](XX) | ![Thrust Chart](thrust_11_04_2026.png) |
+| ![Tank And Chamber Pressure Chart](pressure.png) | ![Thrust Chart](thrust.png) |
 
 ## Post-Mortem
 - Cold Flow też jest mega głośny

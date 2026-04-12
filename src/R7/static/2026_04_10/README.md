@@ -3,21 +3,22 @@
 ## Konfiguracja i Wyniki
 | Konfiguracja Systemu | Parametry Operacyjne | Wyniki Silnikowe |
 | :--- | :--- | :--- |
-| **Soft:** [v0.3.0](https://github.com/Simba-Avionic/srp/releases/tag/v0.3.0) | **Utleniacz:** 8.0 kg \\( N_2O \\) ± 200g | **\\( I_{tot} \\):** 20634.6 Ns |
-| **Hardware:** Engine Board + Main Board | **Ciśnienie:** 52 Bar | **Max Thrust:** 4750.7 N |
-| **Próbkowanie Tensobelki:** 320 Hz | **Temp. Otoczenia:** 10°C | **Burn Time:** 10 s |
-| **Próbkowanie Ciśnienia zbiornika:** 50 Hz | **Próbkowanie Ciśnienia komory:** 166 Hz  | **Odpalenie:** GS Control Panel |
+| **Soft:** [v0.3.0](https://github.com/Simba-Avionic/srp/releases/tag/v0.3.0) | **Utleniacz:** 8.0kg \\( N_2O \\) ± 200g | **\\( I_{tot} \\):** 20634.6Ns |
+| **Hardware:** Engine Board + Main Board | **Ciśnienie:** 52Bar | **Max Thrust:** 4750.7N |
+| **Próbkowanie Tensobelki:** 320Hz | **Temp. Otoczenia:** 10°C | **Burn Time:** 10s |
+| **Próbkowanie Ciśnienia zbiornika:** 50Hz | **Odpalenie:** GS Control Panel  | |
+| **Próbkowanie Ciśnienia komory:** 166Hz | | |
 
 ## Wykresy 
 
 ### Wykres cisnienia Zbiornika i Komory
-![Tank And Chamber Pressure Chart](static_10_04_2026.png)
+![Tank And Chamber Pressure Chart](pressure.png)
 
 ### Przybliżenie na oscylacje Ciśnienia Zbiornika i Komory
-![Tank And Chamber Pressure Zoom](zoom_static_12_03_2026.png)
+![Tank And Chamber Pressure Zoom](pressure_zoom.png)
 
 ### Wykres ciągu
-![Thrust Chart](thrust_10_04_2026.png)
+![Thrust Chart](thrust.png)
 
 ## Post-Mortem
 - 1s między zapłonem a otwarciem venta to wystarczający czas
