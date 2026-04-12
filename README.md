@@ -23,6 +23,8 @@ Repozytorium zawiera dane z testów zebrane przez SimBa
 
 ### Post-Mortem
 - Cold Flow też jest mega głośny
+- Podgrzanie zbiornika w temperaturze 0°C  jedną farelką jest awykonalne (kto by się spodziewał)
+- Trzeba przepisac to repo na GitHub-Pages
 
 | Name | Link |
 |:---:|:---:|
@@ -51,6 +53,8 @@ Repozytorium zawiera dane z testów zebrane przez SimBa
 - Warto by było wyeliminować opuźnienia sterowania z GS
 - Dlaczego dalej niektóre działy które nie musiały kończyć czegoś na miejscu zdecydowały że to dobry pomysł?
 - Warto by dodać funkcję impulsowego otwierania zaworu vent (100ms otwarty 100ms zamknięty)
+- Static Fire po zmroku wygląda fajniej na nagraniach
+- Przy dużej liczbie gapiów może warto by było mieć 2-3 pachołki i taśmę aby wyznaczyć strefe dla obserwatorów
 
 
 | Name | Link |
