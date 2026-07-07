@@ -1,8 +1,8 @@
 import os
-import numpy as np
+
 import matplotlib.pyplot as plt
+import numpy as np
 from PIL import Image
-import os
 
 def generate_gif_frames(x, y1, y2, impuls, fps=60, output_dir="frames"):
     os.makedirs(output_dir, exist_ok=True)
