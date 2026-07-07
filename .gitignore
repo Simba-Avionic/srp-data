@@ -1,3 +1,7 @@
 .venv
 __pycache__
 book
+*.pyc
+.ipynb_checkpoints
+frames/
+output/
