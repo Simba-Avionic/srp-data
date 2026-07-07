@@ -6,7 +6,8 @@ Odpalenie silnika na hamowni z pełnym zapłonem paliwa. Mierzymy ciąg, ciśnie
 
 ## Cold Flow
 
-Odpalenie rakiety bez zapłonu paliwa — sprawdzamy, czy rakieta nie wyskoczy z wyrzutni w razie awarii podpalania ziarna.
+Przepływ paliwa oraz utleniacza **bez zapłonu** — weryfikacja szczelności, ciśnień i sterowania przed testami z paleniem.
+
 
 ## Test hydrostatyczny
 

@@ -27,9 +27,9 @@ srp-data/
 
 | Element | Format | Przykład |
 |---------|--------|----------|
-| Rakieta | `R` + numer | `R7`, `R8` |
+| Rakieta | `R` + numer lub nazwa | `R7`, `Liquid-Rurku` |
 | Data testu | ISO `YYYY-MM-DD` | `2026-03-21` |
-| Typ testu | `static`, `cold-flow`, `hydro`, `launch` | `static` |
+| Typ testu | `static`, `cold-flow`, `hydro`, `launch`, `combustion-chamber` | `cold-flow` |
 
 ## Dodawanie nowej rakiety
 
