@@ -8,7 +8,7 @@ Test przepływu układu zasilania **bez zapłonu** — weryfikacja szczelności,
 
 | Konfiguracja Systemu | Parametry Operacyjne | Wyniki |
 | :--- | :--- | :--- |
-| **Software:** [vX.Y.Z](https://github.com/Simba-Avionic/srp/releases) | **Paliwo:** — | **\\( I_{tot} \\):** — |
+| **Software:** [v1.1.0](https://github.com/Simba-Avionic/srp/releases/tag/v1.1.0) | **Paliwo:** — | **\\( I_{tot} \\):** — |
 | **Hardware:** _do uzupełnienia_ | **Utleniacz:** — | **Max Thrust:** — N |
 | **Próbkowanie Tensobelki:** — Hz | **Ciśnienie:** — Bar | **Czas przepływu:** — s |
 | **Próbkowanie Ciśnienia:** — Hz | **Temp. Otoczenia:** —°C | |
@@ -23,13 +23,13 @@ Test przepływu układu zasilania **bez zapłonu** — weryfikacja szczelności,
 ## Post-Mortem
 - nie ufamy python`owcom, zawsze trzeba sprawdzic czy pamiętali wszystko dopisać
 - Etanol wlewamy na końcu aby umożliwić testy systemu
-- 
+- Warto by zrobić Launch-box który ułatwił by każdorazowe rozkładanie Avioniki
+- cold-flow w liquid na 20Bar nie wyglądają fajnie
 
 ## Materiały
 
 | |
 |:---:|
-| [Nagrania](https://drive.google.com/) |
-| [Dane GS](https://drive.google.com/) |
+| [Nagrania](https://drive.google.com/drive/folders/1QQc-pR0-ygTHSQJzRG7K3Dpg0PRJ70bH) |
 
 Surowe dane: `data/Liquid-Rurku/cold-flow/`

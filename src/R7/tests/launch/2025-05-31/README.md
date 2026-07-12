@@ -6,7 +6,7 @@
 
 | Konfiguracja Systemu | Parametry Operacyjne | Wyniki |
 | :--- | :--- | :--- |
-| **Software:** [v0.4.0](https://github.com/Simba-Avionic/srp/releases/tag/v0.4.0) | **Utleniacz:** XX kg \\( N_2O \\) ± 200 g | **Wysokość lotu:** 709 m |
+| **Software:** [v1.0.0](https://github.com/Simba-Avionic/srp/releases/tag/v1.0.0) | **Utleniacz:** XX kg \\( N_2O \\) ± 200 g | **Wysokość lotu:** 709 m |
 | **Hardware:** [Engine Board v2](../../../common/EngineComputer_schematic.pdf) + [Main Board v2](../../../common/FlightComputer_schematic.pdf) | **Ciśnienie:** 47 Bar | **Prędkość maks.:** 93 m/s |
 | | | **Przyspieszenie maks.:** 80 m/s² |
 
