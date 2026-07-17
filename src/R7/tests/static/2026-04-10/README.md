@@ -29,12 +29,15 @@
 
 ![Postmortem mixera komory spalania](static_3_postmortem_mixer.png)
 
-Izolacja ziarna pękła w trakcie spalania, jednak nie doprowadziło to do przegrzania aluminium, ponieważ parafina również tworzy dobrą warstwę izolacyjną. Powodem była obróbka izolacji ziarna ręcznymi elektronarzędziami na ostatni moment przy pasowaniu ziarna, powinno to się od razu robić na tokarce.
-
-Silnik miał lepsze spalanie od 2. testu, jego działanie nadal jest niestabilne. Główny powód niestabilności silnika prawdopodbnie wynika ze zbyt małej różnicy ciśnień pomiędzy komorą spalania i zbiornika z utleniaczem.
+#### Jak wyglądała komora po teście
+Izolacja ziarna pękła w trakcie spalania, jednak nie doprowadziło to do przegrzania aluminium, ponieważ parafina również tworzy dobrą warstwę izolacyjną. Powodem była obróbka izolacji ziarna ręcznymi elektronarzędziami na ostatni moment przy pasowaniu ziarna, powinno to się od razu robić na tokarce.  
 Mixer nie wyłamał się w trakcie spalania.
 
-Aby poprawić problem małej różnicy ciśnień można powiększyć średnicę gardła dyszy, co powinno również skutkować powiększonym ciągiem.
+#### Jak działał silnik
+Silnik miał lepsze spalanie od 2. testu, jego działanie nadal jest niestabilne. Głównym powodem niestabilności silnika prawdopodbnie jest zbyt małej różnicy ciśnień pomiędzy komorą spalania i zbiornika z utleniaczem.
+
+#### Pomysły, co można zmienić
+Aby poprawić problem małej różnicy ciśnień można powiększyć średnicę gardła dyszy, co powinno również skutkować powiększonym ciągiem.  
 Aby poprawić spalanie można również jeszcze bardziej skrócić ziarno, gdyż nadal wskazuje na lekko za duży udział paliwa.
 
 ### Reszta wniosków

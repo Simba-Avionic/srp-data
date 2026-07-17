@@ -24,14 +24,17 @@
 
 ![Postmortem ziarna komory spalania](static_1_postmortem_grain.png)
 
+#### Jak wyglądała komora po teście
 Po spalaniu ziarno było bardzo porowate, dwa możliwe powody:
 1. Ziarno miało duże porowatości po odlewaniu
 2. Ziarno zbytnio się topiło i zaczęły odlatywać większe stopione kawałki parafiny
 
+#### Jak działał silnik
 Silnik miał bardzo nierówne spalanie, bardzo go dusiło i generował wiele czadu. Powodem duszenia był za duży udział paliwa w spalaniu, dlatego należało zmniejszyć regresję (szybkość wypalania) ziarna. 
 
-Aby osiągnąć mniej paliwa w spalaniu postanowiono zmienić mieszankę ziarna na 84% parafina, 15% hotglue, 1% sadza. Powinno to również poprawić sytuację, jeżeli powód 2. porowatości po spalaniu jest tym prawdziwym. 
-Aby osiągnać mniej porowate postanowiono dodatkowo zastosować w procesie odlewania próżnię.
+#### Co postanowiono zmienić
+Aby osiągnąć mniej paliwa w spalaniu postanowiono zmienić mieszankę ziarna na 84% parafina, 15% hotglue, 1% sadza. Powinno to również poprawić sytuację, jeżeli powód 2. porowatości po spalaniu jest tym prawdziwym.  
+Aby osiągnać mniej porowate postanowiono dodatkowo zastosować w procesie odlewania próżnię.  
 Dla polepszenia spalania postanowiono dodać mixer pomiędzy ziarnem i post combustion chamber.
 
 ### Reszta wniosków

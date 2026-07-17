@@ -31,11 +31,16 @@
 ![Postmortem mixera komory spalania](static_2_postmortem_mixer.png)
 ![Postmortem ścianki komory spalania](static_2_postmortem_bulge.png)
 
-Podczas spalaniu ułamała się zewnętrzna część mixera, co spodowało jego wyrwanie i odkrycie bardzo cienkiej warstwy izolacji na działanie spalania. Izolacja ta się przepaliła, powodując nadmierne nagrzanie się aluminiowej ścianki, która straciła wytrzymałość i pod wpływem ciśnienia się wybrzuszyła. Dodatkowo widoczne było małe pęknięcie w miejsce wybrzuszenia. Ścianka nie była możliwa do wykorzystania jeszcze raz, należało wykonać nową.
+#### Jak wyglądała komora po teście
+Podczas spalaniu ułamała się zewnętrzna część mixera, co spodowało jego wyrwanie i odkrycie bardzo cienkiej warstwy izolacji na działanie spalania. Izolacja ta się przepaliła, powodując nadmierne nagrzanie się aluminiowej ścianki, która straciła wytrzymałość i pod wpływem ciśnienia się wybrzuszyła. Dodatkowo widoczne było małe pęknięcie w miejsce wybrzuszenia.  
+Ścianka nie była możliwa do wykorzystania jeszcze raz, należało wykonać nową.
 
-Silnik miał dużo lepsze spalanie, jego działanie nadal jest niestabilne, ale duszenie i gaszenie silnika jest widoczne dopiero w trakcie spalania fazy gazowej. Głównym powodem duszenia nadal był zbyt duży udział paliwa w spalaniu. Główny powód niestabilności silnika nieznany, zmniejszenie udziału paliwa może poprawić sytuację.
+#### Jak działał silnik
+Silnik miał dużo lepsze spalanie, jego działanie nadal jest niestabilne, ale duszenie i gaszenie silnika jest widoczne dopiero w trakcie spalania fazy gazowej. Głównym powodem duszenia nadal był zbyt duży udział paliwa w spalaniu.  
+Główny powód niestabilności silnika nieznany, zmniejszenie udziału paliwa może poprawić sytuację.
 
-Aby uniknąć sytuacji wyłamania elementu, który odsłania cienką izolację, postanowiono zastosować w washerach i mixerze łączenia geometryczne z dwóch stron. Zwiększono również grubości washerów i mixera.
+#### Co postanowiono zmienić
+Aby uniknąć sytuacji wyłamania elementu, który odsłania cienką izolację, postanowiono zastosować w washerach i mixerze łączenia geometryczne z dwóch stron. Zwiększono również grubości washerów i mixera.  
 Aby osiągnąć mniej paliwa w spalania postanowiono skrócić ziarno o 5cm (z 49cm na 44cm).
 
 ### Reszta wniosków
