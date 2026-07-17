@@ -8,7 +8,10 @@
 | **Hardware:** [Engine Computer](../../../common/EngineComputer_schematic.pdf) | **Ciśnienie:** 55 Bar | **Max Thrust:** 5000N |
 | **Próbkowanie Tensobelki:** 320Hz | **Temp. Otoczenia:** 12°C | **Burn Time:** 8s |
 | **Próbkowanie Ciśnienia zbiornika:** 200Hz | **Odpalenie:** GS Control Panel |  |
-| **Próbkowanie Ciśnienia komory:** 200Hz | | |
+| **Próbkowanie Ciśnienia komory:** 200Hz | **Paliwo:** 84% parafina, 15% hotglue, 1% sadza | |
+
+### Wewnętrzny układ komory spalania
+![Combustion Chamber Cross Section](static_2_CombustionChamber.JPG)
 
 ## Wykresy 
 
@@ -22,9 +25,22 @@
 ![Thrust Chart](thrust.png)
 
 ## Post-Mortem
+
+### Komora spalania
+
+![Postmortem mixera komory spalania](static_2_postmortem_mixer.png)
+![Postmortem ścianki komory spalania](static_2_postmortem_bulge.png)
+
+Podczas spalaniu ułamała się zewnętrzna część mixera, co spodowało jego wyrwanie i odkrycie bardzo cienkiej warstwy izolacji na działanie spalania. Izolacja ta się przepaliła, powodując nadmierne nagrzanie się aluminiowej ścianki, która straciła wytrzymałość i pod wpływem ciśnienia się wybrzuszyła. Dodatkowo widoczne było małe pęknięcie w miejsce wybrzuszenia. Ścianka nie była możliwa do wykorzystania jeszcze raz, należało wykonać nową.
+
+Silnik miał dużo lepsze spalanie, jego działanie nadal jest niestabilne, ale duszenie i gaszenie silnika jest widoczne dopiero w trakcie spalania fazy gazowej. Głównym powodem duszenia nadal był zbyt duży udział paliwa w spalaniu. Główny powód niestabilności silnika nieznany, zmniejszenie udziału paliwa może poprawić sytuację.
+
+Aby uniknąć sytuacji wyłamania elementu, który odsłania cienką izolację, postanowiono zastosować w washerach i mixerze łączenia geometryczne z dwóch stron. Zwiększono również grubości washerów i mixera.
+Aby osiągnąć mniej paliwa w spalania postanowiono skrócić ziarno o 5cm (z 49cm na 44cm).
+
+### Reszta wniosków
 - Posiadanie na test 1 szt elektroniki to znacznie za mało
 - Trzeba przygotowywać timeline operacji i lepiej dbać o komunikacje
-- Silnik dalej ma problemy ze spalaniem
 - Warto używać tych samych definicji mavlink na wszystkich urządzeniach
 - Zapraszamy znacznie mniej osób na testy
 - 1.5s między zapłonem a otwarciem zaworu to znacząco za dużo -> zmniejszamy do 1s

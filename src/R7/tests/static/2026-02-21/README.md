@@ -8,18 +8,35 @@
 | **Hardware:** [DevBoard](../../../common/DevBoard_schematic.pdf) | **Ciśnienie:** 50Bar | **Max Thrust:** 5000N |
 | **Próbkowanie Tensobelki:** 320Hz | **Temp. Otoczenia:** 7°C | **Burn Time:** unknown |
 | **Próbkowanie Ciśnienia zbiornika:** 10Hz | **Odpalenie:** srp-app | |
-| **Próbkowanie Ciśnienia komory:** 10Hz | | |
+| **Próbkowanie Ciśnienia komory:** 10Hz | **Paliwo:** parafina + czarny barwnik do świec | |
+
+### Wewnętrzny układ komory spalania
+![Przekrój komory spalania](static_1_CombustionChamber.JPG)
 
 ## Wykresy 
 
-
 ![Tank And Chamber Pressure Chart](pressure.png)
- ![Thrust Chart](thrust.png) 
+![Thrust Chart](thrust.png) 
 
 ## Post-Mortem
-- Trzeba zwiększyć częstotliwość próbkowania ciśnienia aby zobaczyć oscylacje
-- Silnik ma nierówne spalanie -> zmniejszenie proporcji paliwa do utleniacza
-- Warto by lepiej mocować połączenie tensobelki aby nie stracić danych po 2s
+
+### Komora spalania
+
+![Postmortem ziarna komory spalania](static_1_postmortem_grain.png)
+
+Po spalaniu ziarno było bardzo porowate, dwa możliwe powody:
+1. Ziarno miało duże porowatości po odlewaniu
+2. Ziarno zbytnio się topiło i zaczęły odlatywać większe stopione kawałki parafiny
+
+Silnik miał bardzo nierówne spalanie, bardzo go dusiło i generował wiele czadu. Powodem duszenia był za duży udział paliwa w spalaniu, dlatego należało zmniejszyć regresję (szybkość wypalania) ziarna. 
+
+Aby osiągnąć mniej paliwa w spalaniu postanowiono zmienić mieszankę ziarna na 84% parafina, 15% hotglue, 1% sadza. Powinno to również poprawić sytuację, jeżeli powód 2. porowatości po spalaniu jest tym prawdziwym. 
+Aby osiągnać mniej porowate postanowiono dodatkowo zastosować w procesie odlewania próżnię.
+Dla polepszenia spalania postanowiono dodać mixer pomiędzy ziarnem i post combustion chamber.
+
+### Reszta wniosków
+- Trzeba zwiększyć częstotliwość próbkowania ciśnienia, aby zobaczyć oscylacje
+- Warto by lepiej mocować połączenie tensobelki, aby nie stracić danych po 2s -> brakowało śrubek mocujących złącze
 - 2s między zapłonem a otwarciem zaworu to znacząco za dużo -> zmniejszamy do 1.5s
 
 ## Materiały
