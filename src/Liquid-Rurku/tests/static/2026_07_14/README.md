@@ -4,7 +4,7 @@
 
 | Konfiguracja Systemu | Parametry Operacyjne | Wyniki Silnikowe |
 | :--- | :--- | :--- |
-| **Software:** [v1.2.0]() |  **Utleniacz:** 7.4kg \\( N_2O \\) ± 200g | **\\( I_{tot} \\):** unknown |
+| **Software:** [v1.2.0](https://github.com/Simba-Avionic/srp/releases/tag/v1.2.0) |  **Utleniacz:** 7.4kg \\( N_2O \\) ± 200g | **\\( I_{tot} \\):** unknown |
 | **Hardware:** [TestBox]() |  |**Burn Time:** 7s |
 
 ## Wykresy 
