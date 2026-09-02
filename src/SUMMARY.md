@@ -14,4 +14,5 @@
     - [Test Hydrostatyczny 12.12.2025](R7/tests/hydro/2025-12-12/README.md)
 - [Liquid-Rurku](Liquid-Rurku/README.md)
     - [Cold Flow](Liquid-Rurku/tests/cold-flow/README.md)
+    - [Twst Statyczny 14.07.2026](Liquid-Rurku/tests/static/2026_07_14/README.md)
 ---
