@@ -8,14 +8,13 @@
 | **Hardware:** [Engine Board v2](../../../common/EngineComputer_schematic.pdf) + [Main Board v2](../../../common/FlightComputer_schematic.pdf) | **Ciśnienie:** 47 Bar | **Prędkość maks.:** 93 m/s |
 | | | **Przyspieszenie maks.:** 80 m/s² |
 
+## Wykresy
 
-## Wykresy 
+<div style="margin: 1rem 0;">
+  <iframe src="./fl004_plots_09142026_190818.html" style="width: 100%; min-height: 900px; border: none; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);"></iframe>
+</div>
 
-![Altitude](./altitude.png)
-![Acceleration](./acceleration.png)
-![Gyroscope](./gyroscope.png)
-![Velocity](./velocity.png)
-![Board Temperature](./temperature.png)
+Pełna, samodzielna wersja raportu jest dostępna także jako [plik HTML](./fl004_plots_09142026_190818.html).
 
 ## Post-Mortem
 - Trzeba zmierzyć realny czas nagrzewania się podtlenku i dodać metodę ogrzewania / pressure feed
