@@ -2,8 +2,6 @@
 
 Test przepływu układu zasilania **bez zapłonu** — weryfikacja szczelności, ciśnień i sterowania zaworami przed testami z paleniem.
 
-[Nagranie](./cold_flow.mp4)
-
 ## Konfiguracja i Wyniki
 
 | Konfiguracja Systemu | Parametry Operacyjne | Wyniki |
@@ -30,6 +28,7 @@ Test przepływu układu zasilania **bez zapłonu** — weryfikacja szczelności,
 
 | |
 |:---:|
+| [Nagranie](./cold_flow.mp4) |
 | [Nagrania](https://drive.google.com/drive/folders/1QQc-pR0-ygTHSQJzRG7K3Dpg0PRJ70bH) |
 
 Surowe dane: `data/Liquid-Rurku/cold-flow/`
