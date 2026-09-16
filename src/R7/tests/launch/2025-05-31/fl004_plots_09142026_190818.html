@@ -3890,7 +3890,27 @@ return Plotly;
     </script>
   </head>
 
-  <body style="max-width: 900px">
+  <body>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 12px; font: 15px/1.5 system-ui, sans-serif; color: #202830; background: #fff; }
+      h2 { font-size: 18px; margin: 24px 0 8px; }
+      .flight-plot { width: 100%; height: 440px; margin-bottom: 24px; }
+      .flight-phases { margin: -12px 0 28px; }
+      .flight-phases ol { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 6px 0; list-style: none; }
+      .flight-phases li { flex: 1 1 120px; padding: 6px 10px; border-left: 4px solid var(--phase-color); background: var(--phase-color); border-radius: 4px; }
+      .flight-phases strong, .flight-phases span { display: block; }
+      .flight-phases span { font-size: 12px; }
+      .flight-controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+      button { padding: 6px 12px; cursor: pointer; }
+      input { margin-right: 6px; }
+      details { border: 1px solid #ccd2d8; padding: 10px; border-radius: 6px; }
+      summary { cursor: pointer; font-weight: 600; }
+      table { width: 100%; border-collapse: collapse; table-layout: fixed; margin-top: 12px; }
+      th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; overflow-wrap: anywhere; }
+      th:first-child { width: 30%; }
+      @media (max-width: 480px) { body { padding: 4px; } .flight-plot { height: 400px; } }
+    </style>
     <script>
       const METERS_TO_FEET = 3.28084;
       const MPS_TO_FPS = 3.28084;
@@ -4093,15 +4113,55 @@ return Plotly;
           x.push(o.ts);
         }
 
+        const heading = document.createElement('h2');
+        heading.textContent = title;
+        const controls = document.createElement('div');
+        controls.className = 'flight-controls';
+        const label = document.createElement('label');
+        const toggle = document.createElement('input');
+        toggle.type = 'checkbox';
+        toggle.checked = true;
+        label.append(toggle, document.createTextNode('Znaczniki zdarzeń i faz lotu'));
+        const reset = document.createElement('button');
+        reset.type = 'button'; reset.textContent = 'Resetuj widok';
+        controls.append(label, reset);
+        elementId.before(heading, controls);
+        elementId.className = 'flight-plot';
+        const phases = document.createElement('div');
+        phases.className = 'flight-phases';
+        const caption = document.createElement('span');
+        caption.textContent = 'Fazy lotu — przedziały czasu [s]';
+        const phaseList = document.createElement('ol');
+        phaseList.setAttribute('aria-label', 'Fazy lotu w kolejności czasowej');
+        for (const phase of eventInfo.phases) {
+          const item = document.createElement('li');
+          item.style.setProperty('--phase-color', phase.color);
+          item.title = `${phase.name}: ${phase.start.toFixed(3)} – ${phase.end.toFixed(3)} s`;
+          const name = document.createElement('strong'); name.textContent = phase.name;
+          const interval = document.createElement('span');
+          interval.textContent = `${phase.start.toFixed(3)} – ${phase.end.toFixed(3)} s`;
+          item.append(name, interval); phaseList.append(item);
+        }
+        phases.append(caption, phaseList);
+        elementId.after(phases);
         Plotly.newPlot(elementId, lines, {
-          title: { text: title },
-          margin: { t: 50 },
-          xaxis: { title: "Timestamp [s]" },
-          yaxis: { title: ylabel, tickFormat: ",.0f" },
+          autosize: true,
+          margin: { t: 35, b: 105, l: 65, r: 15 },
+          xaxis: { title: { text: 'Czas [s]' }, automargin: true },
+          yaxis: { title: { text: ylabel }, automargin: true },
+          showlegend: true,
+          legend: { orientation: 'h', x: 0, y: -0.25, xanchor: 'left', yanchor: 'top' },
+          hovermode: 'x unified',
           shapes: eventInfo.shapes,
-          annotations: eventInfo.annotations,
-          template: "plotly_dark",
+          annotations: [],
+        }, { responsive: true, scrollZoom: true, displaylogo: false, displayModeBar: true, showTips: false });
+        toggle.addEventListener('change', () => {
+          phases.hidden = !toggle.checked;
+          Plotly.relayout(elementId, {shapes: toggle.checked ? eventInfo.shapes : []});
         });
+        reset.addEventListener('click', () => Plotly.relayout(elementId, {
+          'xaxis.autorange': true, 'yaxis.autorange': true,
+        }));
       }
 
       function makeEventInfoTraces(flightlog) {
@@ -4153,115 +4213,54 @@ return Plotly;
           7: { name: "TOUCHDOWN", color: COLOR },
         };
 
-        let shapes = [];
-        let annotations = [];
-
-        function events(lastStyle, ts, lastTs) {
-          if (lastStyle) {
-            shapes.push({
-              type: "rectangle",
-              x0: lastTs,
-              y0: 0,
-              x1: ts,
-              y1: 0.05,
-              xref: "x",
-              yref: "paper",
-              opacity: 0.8,
-              fillcolor: STATE_COLOR,
-              line: {
-                color: STATE_COLOR,
-                width: 0,
-              },
-            });
-
-            annotations.push({
-              xref: "x",
-              yref: "paper",
-              x: (ts + lastTs) / 2,
-              xanchor: "center",
-              y: 0.05 / 2,
-              font: { color: "white" },
-              yanchor: "middle",
-              text: lastStyle.name,
-              showarrow: false,
-            });
-          }
+        const shapes = [], rows = [], phases = [];
+        const phaseColors = ['#e4e7eb', '#dceefb', '#ffe0b2', '#d9edcb', '#e8dcf3', '#ccece7', '#f8dce2'];
+        for (let i = 0; i < flightlog.flightStates.length; i++) {
+          const state = flightlog.flightStates[i];
+          const end = flightlog.flightStates[i + 1]?.ts ?? flightlog.lastTs;
+          const name = STATE_MAP[state.state]?.name ?? `State ${state.state}`;
+          const color = phaseColors[(state.state - 1) % phaseColors.length] || '#e4e7eb';
+          phases.push({start: state.ts, end, name, color});
+          rows.push({start: state.ts, end, description: `Faza: ${name}`});
+          shapes.push({type: 'rect', xref: 'x', yref: 'paper', x0: state.ts, x1: end,
+            y0: 0, y1: 1, fillcolor: color,
+            opacity: 0.2, line: {width: 0}, layer: 'below'});
         }
-
-        let i = 0;
-        let lastStyle = undefined;
-        let lastTs = 0;
-        for (let state of flightlog.flightStates) {
-          let ts = state.ts;
-          let style = STATE_MAP[state.state];
-
-          events(lastStyle, ts, lastTs);
-          i++;
-
-          lastStyle = style;
-          lastTs = ts;
+        for (const event of flightlog.eventInfo) {
+          const action = ACTION_MAP[event.action];
+          const name = EVENT_MAP[event.event]?.name ?? `Event ${event.event}`;
+          rows.push({start: event.ts, description: name + (action
+            ? ` — ${action.name}: ${action.arguments(event.argument)}` : '')});
+          shapes.push({type: 'line', xref: 'x', yref: 'paper', x0: event.ts, x1: event.ts,
+            y0: 0, y1: 1, line: {color: '#777', width: 1, dash: 'dot'}, layer: 'below'});
         }
-        events(lastStyle, flightlog.lastTs, lastTs);
-
-        i = 0;
-        for (let event of flightlog.eventInfo) {
-          let ts = event.ts;
-          let style = EVENT_MAP[event.event];
-
-          shapes.push({
-            type: "line",
-            x0: ts,
-            y0: 0,
-            x1: ts,
-            y1: 1,
-            xref: "x",
-            yref: "paper",
-            line: {
-              color: COLOR,
-              width: 2,
-            },
-          });
-
-          let action = ACTION_MAP[event.action];
-
-          annotations.push({
-            xref: "x",
-            yref: "paper",
-            x: ts,
-            xanchor: "left",
-            y: 1,
-            textangle: 0,
-            color: "black",
-            yanchor: "top",
-            text: style.name,
-            font: { color: EVENT_COLOR },
-            showarrow: false,
-          });
-          annotations.push({
-            xref: "x",
-            yref: "paper",
-            x: ts,
-            xanchor: "left",
-            y: 0.05,
-            textangle: 0,
-            color: "black",
-            yanchor: "bottom",
-            text: action
-              ? " " + action.name + " " + action.arguments(event.argument)
-              : "",
-            font: { color: ACTION_COLOR },
-            showarrow: false,
-          });
-          i++;
-        }
-
-        return { shapes: shapes, annotations: annotations };
+        rows.sort((a, b) => a.start - b.start);
+        return {shapes, rows, phases};
       }
 
       function makePlots(flightlog, useImperialUnits) {
         let eventInfo = makeEventInfoTraces(flightlog);
 
         const plotsContainer = document.body;
+        const help = document.createElement('p');
+        help.textContent = 'Zaznacz obszar lub użyj kółka myszy, aby przybliżyć. Kliknięcie legendy ukrywa linię. Podpisy faz są pod każdym wykresem; szczegóły zdarzeń znajdziesz w tabeli poniżej.';
+        const details = document.createElement('details');
+        const summary = document.createElement('summary');
+        summary.textContent = 'Przebieg lotu — fazy i zdarzenia';
+        const table = document.createElement('table');
+        const header = table.createTHead().insertRow();
+        for (const text of ['Czas [s]', 'Faza / zdarzenie / akcja']) {
+          const cell = document.createElement('th'); cell.scope = 'col'; cell.textContent = text; header.append(cell);
+        }
+        const tbody = table.createTBody();
+        for (const item of eventInfo.rows) {
+          const row = tbody.insertRow();
+          row.insertCell().textContent = item.start.toFixed(3) + (item.end === undefined ? '' : ` – ${item.end.toFixed(3)}`);
+          row.insertCell().textContent = item.description;
+        }
+        details.append(summary, table);
+        plotsContainer.append(help, details);
+
 
         let el = document.createElement("div");
         plotsContainer.append(el);

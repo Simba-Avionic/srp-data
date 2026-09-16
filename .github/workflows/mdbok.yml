@@ -57,6 +57,7 @@ jobs:
           chart_server_pid=$!
           trap 'kill "$chart_server_pid"' EXIT
           NODE_PATH="$RUNNER_TEMP/chart-tests/node_modules" node tests/charts-browser.cjs
+          NODE_PATH="$RUNNER_TEMP/chart-tests/node_modules" node tests/launch-browser.cjs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

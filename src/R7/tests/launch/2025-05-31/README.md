@@ -11,7 +11,7 @@
 ## Wykresy
 
 <div style="margin: 1rem 0;">
-  <iframe src="./fl004_plots_09142026_190818.html" style="width: 100%; min-height: 900px; border: none; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);"></iframe>
+  <iframe title="Interaktywne wykresy lotu R7" src="./fl004_plots_09142026_190818.html" style="width: 100%; min-height: 900px; border: none; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);"></iframe>
 </div>
 
 Pełna, samodzielna wersja raportu jest dostępna także jako [plik HTML](./fl004_plots_09142026_190818.html).
