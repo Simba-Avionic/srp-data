@@ -14,9 +14,15 @@ Test przepływu układu zasilania **bez zapłonu** — weryfikacja szczelności,
 
 ## Wykresy
 
-| Analiza Ciśnienia | Analiza Ciągu |
-|:---:|:---:|
-| ![Tank And Chamber Pressure Chart](pressure.png) | ![Thrust Chart](thrust.png) |
+<div class="interactive-chart" data-chart="pressure.plot.json" data-title="Tank And Chamber Pressure Chart">
+<details class="chart-fallback" open><summary>Archiwalny obraz PNG</summary>
+
+![Tank And Chamber Pressure Chart](pressure.png)
+
+</details>
+</div>
+
+Brak opublikowanych danych ciągu dla tego testu.
 
 ## Post-Mortem
 - nie ufamy python`owcom, zawsze trzeba sprawdzic czy pamiętali wszystko dopisać

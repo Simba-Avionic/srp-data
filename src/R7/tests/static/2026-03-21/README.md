@@ -16,13 +16,31 @@
 ## Wykresy 
 
 ### Wykres cisnienia Zbiornika i Komory
+<div class="interactive-chart" data-chart="pressure.plot.json" data-title="Tank And Chamber Pressure Chart">
+<details class="chart-fallback" open><summary>Archiwalny obraz PNG</summary>
+
 ![Tank And Chamber Pressure Chart](pressure.png)
 
+</details>
+</div>
+
 ### Przybliżenie na oscylacje Ciśnienia Zbiornika i Komory
+<div class="interactive-chart" data-chart="pressure_zoom.plot.json" data-title="Tank And Chamber Pressure Zoom">
+<details class="chart-fallback" open><summary>Archiwalny obraz PNG</summary>
+
 ![Tank And Chamber Pressure Zoom](pressure_zoom.png)
 
+</details>
+</div>
+
 ### Wykres ciągu
+<div class="interactive-chart" data-chart="thrust.plot.json" data-title="Thrust Chart">
+<details class="chart-fallback" open><summary>Archiwalny obraz PNG</summary>
+
 ![Thrust Chart](thrust.png)
+
+</details>
+</div>
 
 ## Post-Mortem
 

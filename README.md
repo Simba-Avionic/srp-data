@@ -41,7 +41,7 @@ srp-data/
 
 1. Skopiuj `_templates/test/README.md` do `src/RX/tests/<typ>/YYYY-MM-DD/`
 2. Dodaj surowe dane do `data/RX/<typ>/YYYY-MM-DD/gs/` i `sw/`
-3. Wygeneruj wykresy i skopiuj PNG do katalogu raportu w `src/`
+3. Wygeneruj wykresy i skopiuj PNG do katalogu raportu w `src/`; dodaj również [interaktywną wersję z danych źródłowych](scripts/charts/README.md).
 4. Dodaj wpis w `src/SUMMARY.md`
 
 ## Analiza danych GS
@@ -64,3 +64,7 @@ Szczegóły: [scripts/gs/README.md](scripts/gs/README.md).
 ```bash
 mdbook serve
 ```
+
+## Interaktywne wykresy
+
+Zoom, przesuwanie, odczyty pod kursorem, przełączanie serii i eksport PNG działają lokalnie w przeglądarce. [Źródła danych, regeneracja i testy](scripts/charts/README.md).

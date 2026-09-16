@@ -12,6 +12,14 @@
 
 ![Tank And Chamber Pressure Chart](pressure.png)
 
+### Log launch1 — interaktywnie
+
+<div class="interactive-chart" data-chart="launch1.plot.json" data-title="Ciśnienia — launch1"><noscript>Interaktywne dane wymagają JavaScript; obraz archiwalny znajduje się powyżej.</noscript></div>
+
+### Log launch2 — interaktywnie
+
+<div class="interactive-chart" data-chart="launch2.plot.json" data-title="Ciśnienia — launch2"><noscript>Interaktywne dane wymagają JavaScript; obraz archiwalny znajduje się powyżej.</noscript></div>
+
 ## Post-Mortem
 - Butle z Azotem mają specyficzny gwint
 - check valvy nie sprawdzają się wystarczająco dobrze, dalej trzeba blokować przepływ zaworami
