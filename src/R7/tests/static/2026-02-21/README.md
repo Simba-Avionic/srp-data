@@ -15,8 +15,16 @@
 
 ## Wykresy 
 
+<div class="interactive-chart" data-chart="pressure.plot.json" data-title="Tank And Chamber Pressure Chart">
+<details class="chart-fallback" open><summary>Archiwalny obraz PNG</summary>
+
 ![Tank And Chamber Pressure Chart](pressure.png)
-![Thrust Chart](thrust.png) 
+
+</details>
+</div>
+![Thrust Chart](thrust.png)
+
+Ciąg: obraz archiwalny. Skrypt wskazuje plik `hamownia_log_j.txt`, którego nie ma w repo; dostępny `hamownia_log.txt` nie potwierdza tego samego zakresu.
 
 ## Post-Mortem
 

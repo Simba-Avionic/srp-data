@@ -10,9 +10,15 @@
 | **Próbkowanie Ciśnienia komory:** 166 Hz | |
 
 ## Wykresy 
-| Analiza Ciśnienia | Analiza Ciągu |
-|:---:|:---:|
-| ![Tank And Chamber Pressure Chart](pressure.png) | ![Thrust Chart](thrust.png) |
+Brak opublikowanych danych ciśnienia dla tego testu.
+
+<div class="interactive-chart" data-chart="thrust.plot.json" data-title="Thrust Chart">
+<details class="chart-fallback" open><summary>Archiwalny obraz PNG</summary>
+
+![Thrust Chart](thrust.png)
+
+</details>
+</div>
 
 ## Post-Mortem
 - Cold Flow też jest mega głośny

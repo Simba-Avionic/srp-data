@@ -40,8 +40,23 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      - name: Validate interactive chart data
+        run: |
+          python3 scripts/charts/generate.py --check
+          python3 -m unittest discover -s tests -v
       - name: Build with mdBook
         run: mdbook build
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate chart interactions in Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/chart-tests" playwright@1.63.0
+          "$RUNNER_TEMP/chart-tests/node_modules/.bin/playwright" install --with-deps chromium
+          python3 -m http.server 8765 --directory book > "$RUNNER_TEMP/chart-server.log" 2>&1 &
+          chart_server_pid=$!
+          trap 'kill "$chart_server_pid"' EXIT
+          NODE_PATH="$RUNNER_TEMP/chart-tests/node_modules" node tests/charts-browser.cjs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

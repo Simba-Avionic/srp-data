@@ -9,3 +9,5 @@ optional = true
 
 [output.html]
 mathjax-support = true
+additional-js = ["theme/charts.js"]
+additional-css = ["theme/charts.css"]
