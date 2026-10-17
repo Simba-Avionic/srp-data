@@ -1,4 +1,4 @@
-# Launch 31.05.2025
+# Launch 31.05.2026
 
 ## Konfiguracja i Wyniki
 
