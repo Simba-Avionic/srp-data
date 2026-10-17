@@ -6,7 +6,8 @@
 
 - [Słownik testów](glossary.md)
 - [Rakieta R7](R7/README.md)
-    - [Launch 31.05.2025](R7/tests/launch/2025-05-31/README.md)
+    - [Test Statyczny 15.10.2026](R7/tests/static/2026-10-15/README.md)
+    - [Launch 31.05.2026](R7/tests/launch/2026-05-31/README.md)
     - [Cold Flow 11.04.2026](R7/tests/cold-flow/2026-04-11/README.md)
     - [Test Statyczny 10.04.2026](R7/tests/static/2026-04-10/README.md)
     - [Test Statyczny 21.03.2026](R7/tests/static/2026-03-21/README.md)
