@@ -52,6 +52,9 @@
 ### Reszta wniosków
 - Nawet składając te samą rakietę 4 raz bez checklisty zdarzają się błędy
 - Projekt TestBox jest super inicjatywą
+- Zmniejszenie ciśnienia w komorze (poprzez rozszerzenie gardła dyszy) zmniejszyło amplitudę niestabilności spalania, ale nie wygłuszyło ich całkowicie
+- Znacznie zmniejszyła się wydajność silnika (<180s ISP), co było spodziewane
+- Średnie OF ~= 4.3
 
 
 ## Materiały
