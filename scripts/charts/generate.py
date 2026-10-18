@@ -44,6 +44,20 @@ def chart(traces, ylabel, source, note, xrange=None, xlabel='Czas [s]', **layout
         source=source, note=note)
 
 
+def changes(x, y):
+    keep = [i for i in range(len(y)) if i in (0, len(y)-1) or y[i] != y[i-1]]
+    return [x[i] for i in keep], [y[i] for i in keep]
+
+
+def thrust_chart(pairs, label, source, note):
+    x, y = map(list, zip(*pairs))
+    impulse = [0.0]
+    for i in range(1, len(x)):
+        impulse.append(impulse[-1]+(x[i]-x[i-1])*(y[i]+y[i-1])/2)
+    return chart([trace(label, x, y), trace('Impuls', x, impulse, yaxis='y2')], 'Ciąg [N]', source, note,
+        yaxis2=dict(title=dict(text='Impuls [N·s]'), overlaying='y', side='right'))
+
+
 def generate():
     charts = {}
     for date, offset, window, duration in [('2026-03-21', 81, 20, 15), ('2026-04-10', 210.5, 2, 12)]:
@@ -82,16 +96,32 @@ def generate():
         'Przeliczenia z notebooka: podtrzymanie ostatniego pomiaru; zbiornik — średnia 15 próbek. Oba czujniki logują bar.', [1743, 1752])
     for path in sorted((ROOT/'data/R7').rglob('*.eng')):
         pairs = [list(map(float, line.split())) for line in path.read_text().splitlines()[1:] if line.strip()]
-        x, y = map(list, zip(*pairs))
-        impulse = [0.0]
-        for i in range(1, len(x)):
-            impulse.append(impulse[-1]+(x[i]-x[i-1])*(y[i]+y[i-1])/2)
         kind, date = path.relative_to(ROOT/'data/R7').parts[:2]
-        charts[f'R7/tests/{kind}/{date}/thrust'] = chart([
-            trace('Ciąg — filtr Savitzky–Golay', x, y),
-            trace('Impuls', x, impulse, yaxis='y2')], 'Ciąg [N]', str(path.relative_to(ROOT)),
-            'Zapisana krzywa .eng (filtr SG 21/3), bez ponownej kalibracji. Impuls: całkowanie trapezami; czas od pierwszej próbki.',
-            yaxis2=dict(title=dict(text='Impuls [N·s]'), overlaying='y', side='right'))
+        charts[f'R7/tests/{kind}/{date}/thrust'] = thrust_chart(pairs, 'Ciąg — filtr Savitzky–Golay', str(path.relative_to(ROOT)),
+            'Zapisana krzywa .eng (filtr SG 21/3), bez ponownej kalibracji. Impuls: całkowanie trapezami; czas od pierwszej próbki.')
+    source = 'data/R7/static/2026-10-15/sw/hybrydaV4_finale.txt'
+    pairs = [list(map(float, line.split(','))) for line in (ROOT/source).read_text().splitlines() if line.strip()]
+    charts['R7/tests/static/2026-10-15/thrust'] = thrust_chart(pairs, 'Ciąg', source,
+        'Zapisana krzywa ciągu (czas, N) bez ponownej kalibracji i filtrowania. Impuls: całkowanie trapezami; czas według pliku.')
+    source = 'data/R7/static/2026-10-15/sw/all.csv'
+    rows = read_csv(source)
+    t = [round(float(r['TIMESTAMP']), 3) for r in rows]
+    chamber_axis = dict(yaxis2=dict(title=dict(text='Komora [wartość z CSV]'), overlaying='y', side='right'))
+    charts['R7/tests/static/2026-10-15/pressure'] = chart([
+        trace('Zbiornik utleniacza [bar]', *changes(t, [number(r['OxidizerPressure']) for r in rows]), line=dict(shape='hv')),
+        trace('Komora [wartość z CSV]', *changes(t, [number(r['ChamberPress']) for r in rows]), yaxis='y2', line=dict(shape='hv'))],
+        'Ciśnienie zbiornika [bar]', source,
+        'Pełny log; czas od początku logu. Wszystkie zmiany odczytów, bez wygładzania (powtórzone próbki pominięte, linia schodkowa). '
+        'ChamberPress bez przeliczenia — jednostka niepotwierdzona, osobna oś po prawej.', **chamber_axis)
+    source = 'data/R7/static/2026-10-15/sw/launch.csv'
+    rows = read_csv(source)
+    t = [float(r['TIMESTAMP'])-float(rows[0]['TIMESTAMP']) for r in rows]
+    charts['R7/tests/static/2026-10-15/pressure_zoom'] = chart([
+        trace('Zbiornik utleniacza [bar]', t, [number(r['OxidizerPressure']) for r in rows]),
+        trace('Komora [wartość z CSV]', t, [number(r['ChamberPress']) for r in rows], yaxis='y2')],
+        'Ciśnienie zbiornika [bar]', source,
+        f'Okno startu z launch.csv; czas względem {float(rows[0]["TIMESTAMP"]):.3f} s logu. Wszystkie próbki, bez wygładzania. '
+        'ChamberPress bez przeliczenia — jednostka niepotwierdzona, osobna oś po prawej.', **chamber_axis)
     source = 'data/Liquid-Rurku/cold-flow/2026_07_04/data.csv'
     rows = read_csv(source)
     times = [datetime.strptime(r['timestamp'], '%H:%M:%S.%f') for r in rows]

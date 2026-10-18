@@ -8,7 +8,7 @@ const assert = require('node:assert/strict');
   const base = process.env.CHARTS_URL || 'http://127.0.0.1:8765';
   for (const width of [1280, 390]) {
     await page.setViewportSize({width, height: 950});
-    await page.goto(`${base}/R7/tests/launch/2025-05-31/index.html`);
+    await page.goto(`${base}/R7/tests/launch/2026-05-31/index.html`);
     const frame = page.frameLocator('iframe');
     await frame.locator('.js-plotly-plot').nth(7).waitFor();
     assert.equal(await frame.locator('.js-plotly-plot').count(), 8);
@@ -68,7 +68,7 @@ const assert = require('node:assert/strict');
     assert.ok(await framePage.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
   }
   // The downloadable standalone report must also respond to viewport changes.
-  await page.goto(`${base}/R7/tests/launch/2025-05-31/fl004_plots_09142026_190818.html`);
+  await page.goto(`${base}/R7/tests/launch/2026-05-31/fl004_plots_09142026_190818.html`);
   await page.locator('.js-plotly-plot').nth(7).waitFor();
   await page.setViewportSize({width: 800, height: 950});
   await page.waitForFunction(() => [...document.querySelectorAll('.js-plotly-plot')].every(p => Math.abs(p._fullLayout.width-p.clientWidth)<2));
