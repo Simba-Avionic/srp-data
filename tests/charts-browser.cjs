@@ -9,7 +9,7 @@ const assert = require('node:assert/strict');
  const base = process.env.CHARTS_URL || 'http://127.0.0.1:8765';
  // Verify the charts work with all external network access disabled.
  await page.route('**/*', route => (route.request().url().startsWith(base) || route.request().url().startsWith('blob:'+base) || route.request().url().startsWith('data:')) ? route.continue() : route.abort());
- const pages = ['R7/tests/static/2026-02-21', 'R7/tests/static/2026-03-21', 'R7/tests/static/2026-04-10', 'R7/tests/cold-flow/2026-04-11', 'Liquid-Rurku/tests/cold-flow', 'Liquid-Rurku/tests/static/2026_07_14'];
+ const pages = ['R7/tests/static/2026-02-21', 'R7/tests/static/2026-03-21', 'R7/tests/static/2026-04-10', 'R7/tests/static/2026-10-15', 'R7/tests/cold-flow/2026-04-11', 'Liquid-Rurku/tests/cold-flow', 'Liquid-Rurku/tests/static/2026_07_14'];
  let count = 0;
  for (const path of pages) {
   console.log(path);
@@ -22,7 +22,7 @@ const assert = require('node:assert/strict');
    assert.ok(await host.locator('.scatterlayer .trace').count()); count++;
   }
  }
- assert.equal(count, 11);
+ assert.equal(count, 14);
  await page.goto(`${base}/R7/tests/static/2026-03-21/index.html`);
  const host = page.locator('[data-chart]').first(); await host.scrollIntoViewIfNeeded();
  await page.waitForFunction(() => document.querySelector('[data-chart]').dataset.loaded === 'true');

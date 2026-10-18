@@ -50,11 +50,35 @@ class ChartsTest(unittest.TestCase):
         for name, chart in self.charts.items():
             if not name.endswith('/thrust'):
                 continue
-            expected = [tuple(map(float, line.split())) for line in (ROOT/chart['source']).read_text().splitlines()[1:] if line.strip()]
+            source = ROOT/chart['source']
+            if source.suffix == '.eng':
+                expected = [tuple(map(float, line.split())) for line in source.read_text().splitlines()[1:] if line.strip()]
+            else:
+                expected = [tuple(map(float, line.split(','))) for line in source.read_text().splitlines() if line.strip()]
             thrust, impulse = chart['data']
             self.assertEqual(list(zip(thrust['x'], thrust['y'])), expected)
             area = sum((b[0]-a[0])*(a[1]+b[1])/2 for a,b in zip(expected, expected[1:]))
             self.assertAlmostEqual(impulse['y'][-1], area)
+
+    def test_step_compression_is_lossless(self):
+        raw = charts.read_csv('data/R7/static/2026-10-15/sw/all.csv')
+        for trace, col in zip(self.charts['R7/tests/static/2026-10-15/pressure']['data'], ['OxidizerPressure', 'ChamberPress']):
+            self.assertEqual(trace['line']['shape'], 'hv')
+            self.assertEqual(trace['x'][-1], round(float(raw[-1]['TIMESTAMP']), 3))
+            j = 0
+            for row in raw:
+                t = round(float(row['TIMESTAMP']), 3)
+                while j+1 < len(trace['x']) and trace['x'][j+1] <= t:
+                    j += 1
+                self.assertEqual(trace['y'][j], float(row[col]))
+
+    def test_launch_window_keeps_raw_samples(self):
+        raw = charts.read_csv('data/R7/static/2026-10-15/sw/launch.csv')
+        oxidizer, chamber = self.charts['R7/tests/static/2026-10-15/pressure_zoom']['data']
+        self.assertEqual(oxidizer['x'][0], 0)
+        self.assertEqual(oxidizer['y'], [float(r['OxidizerPressure']) for r in raw])
+        self.assertEqual(chamber['y'], [float(r['ChamberPress']) for r in raw])
+        self.assertEqual(chamber['yaxis'], 'y2')
 
     def test_recording_break_is_not_connected(self):
         for trace in self.charts['Liquid-Rurku/tests/static/2026_07_14/launch1']['data']:

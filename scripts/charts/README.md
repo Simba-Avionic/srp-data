@@ -42,7 +42,7 @@ npm install --prefix /tmp/srp-browser playwright@1.63.0
 NODE_PATH=/tmp/srp-browser/node_modules node tests/charts-browser.cjs
 ```
 
-Inny adres: zmienna `CHARTS_URL`. Testy sprawdzają wszystkie 11 wykresów,
+Inny adres: zmienna `CHARTS_URL`. Testy sprawdzają wszystkie 14 wykresów,
 blokują zewnętrzną sieć, sprawdzają legendę, zoom prostokątem, pan, reset,
 kontrolki serii, powiększenie, zoom kółkiem, odczyty kursora, eksport PNG, wydruk, szerokość mobilną i fallback. Zrzuty ekranu
 powstają w `/tmp/srp-charts-{desktop,mobile}.png`.
@@ -65,6 +65,10 @@ powstają w `/tmp/srp-charts-{desktop,mobile}.png`.
 - Liquid static: oba pełne logi aplikacji, bo brak receptury okna archiwalnego
   PNG. Powtórzony nagłówek CSV jest pomijany, przerwy rejestracji >5 s nie są
   łączone linią. Czas jest liczony od początku każdego logu oddzielnie.
+- R7 październik: `all.csv` (pełny log) i `launch.csv` (okno startu) bez
+  przeliczeń. Pełny log pomija powtórzone próbki i rysuje linię schodkową —
+  bezstratnie względem logu. `ChamberPress` ma niepotwierdzoną jednostkę,
+  dlatego ma osobną oś. Ciąg z `hybrydaV4_finale.txt` (czas, N) bez filtrowania.
 - Hydro oraz ciąg R7 z lutego pozostają obrazami: brak źródła hydro i pliku
   `hamownia_log_j.txt` używanego przez skrypt lutowy. Nie digitalizujemy PNG.
 - Usunięto odwołania do nieistniejących wykresów ciśnienia R7 cold-flow oraz
@@ -85,6 +89,12 @@ wygeneruj JSON i osadź go obok PNG:
 
 </details>
 </div>
+```
+
+Gdy brak archiwalnego PNG, wygeneruj go z JSON (wymaga `requirements.txt`):
+
+```bash
+python3 scripts/charts/fallback_png.py src/R7/tests/static/2026-10-15/*.plot.json
 ```
 
 Nie umieszczaj komponentu w tabeli. Zostaw puste linie wokół Markdown wewnątrz
