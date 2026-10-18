@@ -67,8 +67,10 @@ powstają w `/tmp/srp-charts-{desktop,mobile}.png`.
   łączone linią. Czas jest liczony od początku każdego logu oddzielnie.
 - R7 październik: `all.csv` (pełny log) i `launch.csv` (okno startu) bez
   przeliczeń. Pełny log pomija powtórzone próbki i rysuje linię schodkową —
-  bezstratnie względem logu. `ChamberPress` ma niepotwierdzoną jednostkę,
-  dlatego ma osobną oś. Ciąg z `hybrydaV4_finale.txt` (czas, N) bez filtrowania.
+  bezstratnie względem logu. `ChamberPress` logger przeliczył współczynnikami
+  czujnika 11 (`a=166.6667, b=-99`) zamiast 12 (`a=41.66667, b=-23.98677`,
+  `srp/deployment/apps/env_service/config.json`) i zapisał ×100. Odwracamy to:
+  `bar = raw/400 + 0.7632`. Ciąg z `hybrydaV4_finale.txt` (czas, N) bez filtrowania.
 - Hydro oraz ciąg R7 z lutego pozostają obrazami: brak źródła hydro i pliku
   `hamownia_log_j.txt` używanego przez skrypt lutowy. Nie digitalizujemy PNG.
 - Usunięto odwołania do nieistniejących wykresów ciśnienia R7 cold-flow oraz
