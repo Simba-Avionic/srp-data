@@ -49,6 +49,11 @@ def changes(x, y):
     return [x[i] for i in keep], [y[i] for i in keep]
 
 
+def chamber_bar(value, wrong=(166.6667, -99.0), right=(41.66667, -23.98677)):
+    volts = (number(value)/100 - wrong[1]) / wrong[0]
+    return round(right[0]*volts + right[1], 4)
+
+
 def thrust_chart(pairs, label, source, note):
     x, y = map(list, zip(*pairs))
     impulse = [0.0]
@@ -103,25 +108,26 @@ def generate():
     pairs = [list(map(float, line.split(','))) for line in (ROOT/source).read_text().splitlines() if line.strip()]
     charts['R7/tests/static/2026-10-15/thrust'] = thrust_chart(pairs, 'Ciąg', source,
         'Zapisana krzywa ciągu (czas, N) bez ponownej kalibracji i filtrowania. Impuls: całkowanie trapezami; czas według pliku.')
+    chamber_note = ('Komora: logger przeliczył napięcie współczynnikami czujnika 11 (a=166.6667, b=-99) zamiast 12 '
+        '(a=41.66667, b=-23.98677) i zapisał ×100; odwracamy to (srp: deployment/apps/env_service/config.json).')
     source = 'data/R7/static/2026-10-15/sw/all.csv'
     rows = read_csv(source)
     t = [round(float(r['TIMESTAMP']), 3) for r in rows]
-    chamber_axis = dict(yaxis2=dict(title=dict(text='Komora [wartość z CSV]'), overlaying='y', side='right'))
     charts['R7/tests/static/2026-10-15/pressure'] = chart([
-        trace('Zbiornik utleniacza [bar]', *changes(t, [number(r['OxidizerPressure']) for r in rows]), line=dict(shape='hv')),
-        trace('Komora [wartość z CSV]', *changes(t, [number(r['ChamberPress']) for r in rows]), yaxis='y2', line=dict(shape='hv'))],
-        'Ciśnienie zbiornika [bar]', source,
+        trace('Zbiornik utleniacza', *changes(t, [number(r['OxidizerPressure']) for r in rows]), line=dict(shape='hv')),
+        trace('Komora', *changes(t, [chamber_bar(r['ChamberPress']) for r in rows]), line=dict(shape='hv'))],
+        'Ciśnienie [bar]', source,
         'Pełny log; czas od początku logu. Wszystkie zmiany odczytów, bez wygładzania (powtórzone próbki pominięte, linia schodkowa). '
-        'ChamberPress bez przeliczenia — jednostka niepotwierdzona, osobna oś po prawej.', **chamber_axis)
+        + chamber_note)
     source = 'data/R7/static/2026-10-15/sw/launch.csv'
     rows = read_csv(source)
     t = [float(r['TIMESTAMP'])-float(rows[0]['TIMESTAMP']) for r in rows]
     charts['R7/tests/static/2026-10-15/pressure_zoom'] = chart([
-        trace('Zbiornik utleniacza [bar]', t, [number(r['OxidizerPressure']) for r in rows]),
-        trace('Komora [wartość z CSV]', t, [number(r['ChamberPress']) for r in rows], yaxis='y2')],
-        'Ciśnienie zbiornika [bar]', source,
+        trace('Zbiornik utleniacza', t, [number(r['OxidizerPressure']) for r in rows]),
+        trace('Komora', t, [chamber_bar(r['ChamberPress']) for r in rows])],
+        'Ciśnienie [bar]', source,
         f'Okno startu z launch.csv; czas względem {float(rows[0]["TIMESTAMP"]):.3f} s logu. Wszystkie próbki, bez wygładzania. '
-        'ChamberPress bez przeliczenia — jednostka niepotwierdzona, osobna oś po prawej.', **chamber_axis)
+        + chamber_note)
     source = 'data/Liquid-Rurku/cold-flow/2026_07_04/data.csv'
     rows = read_csv(source)
     times = [datetime.strptime(r['timestamp'], '%H:%M:%S.%f') for r in rows]

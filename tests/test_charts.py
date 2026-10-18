@@ -62,7 +62,8 @@ class ChartsTest(unittest.TestCase):
 
     def test_step_compression_is_lossless(self):
         raw = charts.read_csv('data/R7/static/2026-10-15/sw/all.csv')
-        for trace, col in zip(self.charts['R7/tests/static/2026-10-15/pressure']['data'], ['OxidizerPressure', 'ChamberPress']):
+        for trace, convert in zip(self.charts['R7/tests/static/2026-10-15/pressure']['data'],
+                                  [lambda r: float(r['OxidizerPressure']), lambda r: charts.chamber_bar(r['ChamberPress'])]):
             self.assertEqual(trace['line']['shape'], 'hv')
             self.assertEqual(trace['x'][-1], round(float(raw[-1]['TIMESTAMP']), 3))
             j = 0
@@ -70,15 +71,22 @@ class ChartsTest(unittest.TestCase):
                 t = round(float(row['TIMESTAMP']), 3)
                 while j+1 < len(trace['x']) and trace['x'][j+1] <= t:
                     j += 1
-                self.assertEqual(trace['y'][j], float(row[col]))
+                self.assertEqual(trace['y'][j], convert(row))
 
     def test_launch_window_keeps_raw_samples(self):
         raw = charts.read_csv('data/R7/static/2026-10-15/sw/launch.csv')
         oxidizer, chamber = self.charts['R7/tests/static/2026-10-15/pressure_zoom']['data']
         self.assertEqual(oxidizer['x'][0], 0)
         self.assertEqual(oxidizer['y'], [float(r['OxidizerPressure']) for r in raw])
-        self.assertEqual(chamber['y'], [float(r['ChamberPress']) for r in raw])
-        self.assertEqual(chamber['yaxis'], 'y2')
+        self.assertEqual(len(chamber['y']), len(raw))
+
+    def test_chamber_recalibration(self):
+        # Logged: 100*(166.6667*V - 99); actual sensor 12: 41.66667*V - 23.98677, i.e. raw/400 + 0.7632.
+        for raw in (-540, 0, 7032, 9476):
+            self.assertAlmostEqual(charts.chamber_bar(raw), raw/400 + 0.7632, places=3)
+        raw = charts.read_csv('data/R7/static/2026-10-15/sw/launch.csv')
+        chamber = self.charts['R7/tests/static/2026-10-15/pressure_zoom']['data'][1]['y']
+        self.assertTrue(all(c < float(r['OxidizerPressure']) for c, r in zip(chamber, raw) if c > 3))
 
     def test_recording_break_is_not_connected(self):
         for trace in self.charts['Liquid-Rurku/tests/static/2026_07_14/launch1']['data']:
